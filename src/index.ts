@@ -24,7 +24,7 @@ client.commands = new Collection()
 /// @ts-ignore
 client.aliases = new Collection()
 
-fs.readdir("./commands/", (err, files) => {
+fs.readdir("./dist/commands/", (err, files) => {
   if (err) console.log(err);
 
   let jsfile = files.filter((f) => f.split(".").pop() === "js");
@@ -69,11 +69,6 @@ client.on('message', async (message) => {
       /// @ts-ignore
       client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
     if (commandfile) commandfile.run(client, message, args);
-
-
-    if (message.content.startsWith(`${PREFIX}test`)) {
-        message.edit(message.author.id);
-    }
 
 });
 
